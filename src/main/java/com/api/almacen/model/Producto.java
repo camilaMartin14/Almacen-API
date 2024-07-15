@@ -1,10 +1,14 @@
 package com.api.almacen.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter@Setter
+@Entity
 public class Producto {
+    @Id
     private Long codigo_producto;
     private String nombre;
     private String marca;

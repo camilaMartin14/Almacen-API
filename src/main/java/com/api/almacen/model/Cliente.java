@@ -1,9 +1,11 @@
 package com.api.almacen.model;
 
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter@Setter
+@Entity
 public class Cliente {
     private Long id_cliente;
     private String nombre;

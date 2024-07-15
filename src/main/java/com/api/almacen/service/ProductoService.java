@@ -32,6 +32,6 @@ public class ProductoService implements IProductoService{
 
     @Override
     public void deleteProducto(Long id) {
-        Producto prod = produRepo.deleteById(id);
+        produRepo.deleteById(id);
     }
 }

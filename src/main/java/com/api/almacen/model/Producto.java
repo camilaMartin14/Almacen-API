@@ -21,7 +21,11 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Long codigo_producto, String nombre, String marca, double precio, double cantidad_disponible) {
+    public Producto(Long codigo_producto, 
+                    String nombre, 
+                    String marca, 
+                    double precio,
+                    double cantidad_disponible) {
         this.codigo_producto = codigo_producto;
         this.nombre = nombre;
         this.marca = marca;

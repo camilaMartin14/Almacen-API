@@ -34,4 +34,26 @@ public class ProductoService implements IProductoService{
     public void deleteProducto(Long id) {
         produRepo.deleteById(id);
     }
+
+    @Override
+    public void editProducto(Long codigoOriginal, 
+                            Long nuevoCodigo,
+                            String nuevoNombre, 
+                            String nuevaMarca, 
+                            double nuevoPrecio, 
+                            double nuevaCantidad) {
+    
+    //Busco objeto original
+    Producto prod = this.findProducto(codigoOriginal);
+
+    //modificación a nivel lógico
+    prod.setCodigo_producto(nuevoCodigo);
+    prod.setCantidad_disponible(nuevaCantidad);
+    prod.setMarca(nuevaMarca);
+    prod.setNombre(nuevoNombre);
+    prod.setPrecio(nuevoPrecio);
+    
+    //guardar cambios
+    this.saveProducto(prod);
+    }
 }

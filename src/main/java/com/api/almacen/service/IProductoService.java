@@ -18,7 +18,10 @@ public interface IProductoService {
     public void deleteProducto(Long id);
     
     //modificación
-    
-    
-    
+    public void editProducto(Long codigoOriginal, 
+                            Long nuevoCodigo,
+                            String nuevoNombre, 
+                            String nuevaMarca, 
+                            double nuevoPrecio,
+                            double nuevaCantidad);
 }

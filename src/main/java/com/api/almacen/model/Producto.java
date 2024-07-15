@@ -1,5 +1,5 @@
 package com.api.almacen.model;
 
-public class Cliente {
+public class Producto {
     
 }

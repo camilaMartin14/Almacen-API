@@ -1,7 +1,13 @@
+FROM bitnami/java
 
-# Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-# Click nbfs://nbhost/SystemFileSystem/Templates/Other/Dockerfile to edit this template
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
 
-FROM alpine:latest
+# Copia el archivo JAR construido de tu aplicación Spring Boot al contenedor
+COPY target/odontologo-0.0.1-SNAPSHOT.jar /app/app.jar
 
-CMD ["/bin/sh"]
+# Expone el puerto en el que tu aplicación Spring Boot se ejecuta dentro del contenedor
+EXPOSE 8080
+
+# Comando para ejecutar tu aplicación Spring Boot cuando el contenedor se inicie
+CMD ["java", "-jar", "app.jar"]

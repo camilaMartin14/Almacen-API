@@ -1,5 +1,7 @@
 package com.api.almacen.service;
 
+import com.api.almacen.model.Cliente;
+import com.api.almacen.model.Producto;
 import com.api.almacen.model.Venta;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +19,8 @@ public interface IVentaService {
     public void editVenta(Long codigoVentaOriginal,
                             Long nuevoCodigoVenta,
                             LocalDate nuevaFechaVenta, 
-                            double nuevoTotal);
+                            double nuevoTotal,
+                            List<Producto> nuevaListaProductos,
+                            Cliente nuevoCliente);
 }
 

@@ -52,7 +52,12 @@ public class VentaController {
             @RequestParam(required = false, name= "lista_productos") List<Producto> nuevaListaProductos,
             @RequestParam(required = false, name= "ciente") Cliente nuevoCliente){
     
-        venServ.editVenta(codigoVentaOriginal, nuevoCodigoVenta, nuevaFechaVenta, nuevoTotal, nuevaListaProductos, nuevoCliente);
+        venServ.editVenta(codigoVentaOriginal, 
+                            nuevoCodigoVenta,
+                            nuevaFechaVenta, 
+                            nuevoTotal, 
+                            nuevaListaProductos, 
+                            nuevoCliente);
         
         Venta ven = venServ.findVenta(nuevoCodigoVenta);
         

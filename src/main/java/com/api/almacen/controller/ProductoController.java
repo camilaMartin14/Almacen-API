@@ -49,7 +49,12 @@ public class ProductoController {
             @RequestParam(required = false, name= "precio") double nuevoPrecio,
             @RequestParam(required = false, name= "cantidad_disponible") double nuevaCantidad){
     
-        prodServ.editProducto(codigoOriginal, nuevoCodigo, nuevoNombre, nuevaMarca, nuevoPrecio, nuevaCantidad);
+        prodServ.editProducto(codigoOriginal, 
+                                nuevoCodigo, 
+                                nuevoNombre, 
+                                nuevaMarca, 
+                                nuevoPrecio, 
+                                nuevaCantidad);
         
         Producto prod = prodServ.findProducto(nuevoCodigo);
         

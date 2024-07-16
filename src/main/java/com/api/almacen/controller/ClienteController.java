@@ -48,7 +48,11 @@ public class ClienteController {
             @RequestParam(required = false, name= "marca") String nuevoApellido,
             @RequestParam(required = false, name= "precio") String nuevoDni){
             
-        cliServ.editCliente(idOriginal, nuevaId, nuevoNombre, nuevoApellido, nuevoDni);
+        cliServ.editCliente(idOriginal, 
+                            nuevaId, 
+                            nuevoNombre, 
+                            nuevoApellido, 
+                            nuevoDni);
         
         Cliente cli = cliServ.findCliente(nuevaId);
         

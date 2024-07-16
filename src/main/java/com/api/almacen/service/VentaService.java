@@ -1,5 +1,7 @@
 package com.api.almacen.service;
 
+import com.api.almacen.model.Cliente;
+import com.api.almacen.model.Producto;
 import com.api.almacen.model.Venta;
 import com.api.almacen.repository.IVentaRepository;
 import java.time.LocalDate;
@@ -37,14 +39,18 @@ public class VentaService implements IVentaService{
     public void editVenta(Long codigoVentaOriginal,
                             Long nuevoCodigoVenta, 
                             LocalDate nuevaFechaVenta, 
-                            double nuevoTotal) {
-        
-        Venta ven = this.findVenta(codigoVentaOriginal);
-        
+                            double nuevoTotal, 
+                            List<Producto> nuevaListaProductos,
+                            Cliente nuevoCliente) {
+
+    Venta ven = this.findVenta(codigoVentaOriginal);
+
         ven.setCodigo_venta(nuevoCodigoVenta);
         ven.setFecha_venta(nuevaFechaVenta);
         ven.setTotal(nuevoTotal);
-        
-        this.saveVenta(ven);
+        ven.setListaProductos(nuevaListaProductos);
+        ven.setCliente(nuevoCliente);
+
+       this.saveVenta(ven);
     }
 }

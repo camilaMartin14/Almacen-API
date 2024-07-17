@@ -7,7 +7,9 @@ import com.api.almacen.repository.IVentaRepository;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class VentaService implements IVentaService{
     
     @Autowired
@@ -49,7 +51,7 @@ public class VentaService implements IVentaService{
         ven.setFecha_venta(nuevaFechaVenta);
         ven.setTotal(nuevoTotal);
         ven.setListaProductos(nuevaListaProductos);
-        ven.setCliente(nuevoCliente);
+        ven.setUnCliente(nuevoCliente);
 
        this.saveVenta(ven);
     }

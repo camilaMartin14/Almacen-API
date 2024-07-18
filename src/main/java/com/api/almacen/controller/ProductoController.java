@@ -41,7 +41,7 @@ public class ProductoController {
     }
     
     //modificar
-    @PutMapping("/productos/editar/{codigo_producto}")
+    @PutMapping("/productos/editar/{codigoOriginal}")
     public Producto editProducto (@PathVariable Long codigoOriginal,
             @RequestParam(required = false, name= "codigo_producto") Long nuevoCodigo,
             @RequestParam(required = false, name= "nombre") String nuevoNombre,

@@ -45,14 +45,14 @@ public class VentaController {
     
     //modificar
     @PutMapping("/ventas/editar/{codigo_venta}")
-    public Venta editVenta (@PathVariable Long codigoVentaOriginal,
+    public Venta editVenta (@PathVariable Long codigo_venta,
             @RequestParam(required = false, name= "codigo_venta") Long nuevoCodigoVenta,
             @RequestParam(required = false, name= "fecha_venta") LocalDate nuevaFechaVenta,
             @RequestParam(required = false, name= "total") double nuevoTotal,
             @RequestParam(required = false, name= "lista_productos") List<Producto> nuevaListaProductos,
             @RequestParam(required = false, name= "ciente") Cliente nuevoCliente){
     
-        venServ.editVenta(codigoVentaOriginal, 
+        venServ.editVenta(codigo_venta, 
                             nuevoCodigoVenta,
                             nuevaFechaVenta, 
                             nuevoTotal, 

@@ -42,13 +42,13 @@ public class ClienteController {
 
     //modificar
     @PutMapping("/clientes/editar/{id_cliente}")
-    public Cliente editCliente (@PathVariable Long idOriginal,
+    public Cliente editCliente (@PathVariable Long id_cliente,
             @RequestParam(required = false, name= "codigo_producto") Long nuevaId,
             @RequestParam(required = false, name= "nombre") String nuevoNombre,
             @RequestParam(required = false, name= "marca") String nuevoApellido,
             @RequestParam(required = false, name= "precio") String nuevoDni){
             
-        cliServ.editCliente(idOriginal, 
+        cliServ.editCliente(id_cliente, 
                             nuevaId, 
                             nuevoNombre, 
                             nuevoApellido, 

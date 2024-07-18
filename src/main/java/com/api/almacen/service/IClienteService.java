@@ -23,4 +23,6 @@ public interface IClienteService {
                             String nuevoNombre, 
                             String nuevoApellido, 
                             String nuevoDni);
+
+    public void editCliente(Cliente cli);
 }

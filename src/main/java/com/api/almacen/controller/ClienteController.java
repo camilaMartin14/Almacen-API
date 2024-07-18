@@ -40,7 +40,7 @@ public class ClienteController {
         return "El cliente se borró correctamente";
     }
 
-    //modificar
+    //modificar, pudiendo modificar el id original
     @PutMapping("/clientes/editar/{id_cliente}")
     public Cliente editCliente (@PathVariable Long id_cliente,
             @RequestParam(required = false, name= "codigo_producto") Long nuevaId,
@@ -57,5 +57,13 @@ public class ClienteController {
         Cliente cli = cliServ.findCliente(nuevaId);
         
         return cli;
+    }
+    
+    //modificar, considerando que el id original es intocable
+    @PutMapping("/clientes/editar")
+    public Cliente editCliente(@RequestBody Cliente cli){
+        cliServ.editCliente(cli);
+        
+        return cliServ.findCliente(cli.getId_cliente());
     }
 }

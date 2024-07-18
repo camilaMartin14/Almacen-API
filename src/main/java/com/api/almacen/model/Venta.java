@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import java.time.LocalDate;
@@ -22,6 +23,7 @@ public class Venta {
     @OneToMany
     private List<Producto> listaProductos;
     @OneToOne
+    @JoinColumn(name = "un_cliente_id_cliente", referencedColumnName = "id_cliente")
     private Cliente unCliente;
 
     public Venta() {

@@ -22,5 +22,7 @@ public interface IVentaService {
                             double nuevoTotal,
                             List<Producto> nuevaListaProductos,
                             Cliente nuevoCliente);
+
+    public void editVenta(Venta ven);
 }
 

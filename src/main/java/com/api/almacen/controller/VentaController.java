@@ -43,7 +43,7 @@ public class VentaController {
         return "La venta se borró correctamente";
     }
     
-    //modificar
+    //modificar, pudiendo cambiar id original
     @PutMapping("/ventas/editar/{codigo_venta}")
     public Venta editVenta (@PathVariable Long codigo_venta,
             @RequestParam(required = false, name= "codigo_venta") Long nuevoCodigoVenta,
@@ -64,5 +64,12 @@ public class VentaController {
         return ven;
     }
     
+    //modificar, considerando que el id original es intocable
+    @PutMapping("/ventas/editar")
+    public Venta editVenta(@RequestBody Venta ven){
+        venServ.editVenta(ven);
+        
+        return venServ.findVenta(ven.getCodigo_venta());
+    }
 }
 

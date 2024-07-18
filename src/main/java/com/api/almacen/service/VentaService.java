@@ -55,4 +55,9 @@ public class VentaService implements IVentaService{
 
        this.saveVenta(ven);
     }
+
+    @Override
+    public void editVenta(Venta ven) {
+        this.saveVenta(ven);
+    }
 }

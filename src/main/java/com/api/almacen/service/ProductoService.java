@@ -56,4 +56,9 @@ public class ProductoService implements IProductoService{
     //guardar cambios
     this.saveProducto(prod);
     }
+
+    @Override
+    public void editProducto(Producto prod) {
+        this.saveProducto(prod);
+    }
 }

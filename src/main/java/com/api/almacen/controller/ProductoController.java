@@ -61,4 +61,12 @@ public class ProductoController {
         return prod;
     }
     
+    //modificar, considerando que el id original es intocable
+    @PutMapping("/productos/editar")
+    public Producto editProducto(@RequestBody Producto prod){
+        prodServ.editProducto(prod);
+        
+        return prodServ.findProducto(prod.getCodigo_producto());
+    }
+    
 }

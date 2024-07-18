@@ -24,4 +24,6 @@ public interface IProductoService {
                             String nuevaMarca, 
                             double nuevoPrecio,
                             double nuevaCantidad);
+
+    public void editProducto(Producto prod);
 }

@@ -26,4 +26,8 @@ public interface IProductoService {
                             double nuevaCantidad);
 
     public void editProducto(Producto prod);
+    
+    //-------------------------- Métodos adicionales --------------------------
+    
+    public List findProductoBajoStock();
 }

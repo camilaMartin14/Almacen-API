@@ -2,6 +2,7 @@ package com.api.almacen.service;
 
 import com.api.almacen.model.Producto;
 import com.api.almacen.repository.IProductoRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,5 +61,21 @@ public class ProductoService implements IProductoService{
     @Override
     public void editProducto(Producto prod) {
         this.saveProducto(prod);
+    }
+    
+    //-------------------------- Métodos adicionales --------------------------
+
+    @Override
+    public List<Producto> findProductoBajoStock() {
+        List<Producto> todosLosProductos = getProductos();
+        List<Producto> productosBajoStock = new ArrayList<>();
+
+        for (Producto producto : todosLosProductos) {
+            if (producto.getCantidad_disponible() <= 5) {
+                productosBajoStock.add(producto);
+            }
+        }
+
+        return productosBajoStock;
     }
 }

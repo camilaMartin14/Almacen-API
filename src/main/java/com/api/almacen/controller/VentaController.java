@@ -4,9 +4,14 @@ import com.api.almacen.model.Cliente;
 import com.api.almacen.model.Producto;
 import com.api.almacen.model.Venta;
 import com.api.almacen.service.IVentaService;
+import com.api.almacen.service.VentaService;
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +26,9 @@ public class VentaController {
         
     @Autowired
     private IVentaService venServ;
+    
+    @Autowired
+    private VentaService ventaService;
     
     //listar
     @GetMapping ("/ventas")
@@ -70,6 +78,23 @@ public class VentaController {
         venServ.editVenta(ven);
         
         return venServ.findVenta(ven.getCodigo_venta());
+    }
+    
+    //encontrar venta más alta en un día específico
+    @GetMapping("/venta-mas-alta")
+    public ResponseEntity<?> obtenerVentaMasAltaEnFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+        Venta ventaMasAlta = ventaService.obtenerVentaMasAltaEnFecha(fecha);
+        Cliente clienteDeVentaMasAlta = ventaService.obtenerClienteDeVentaMasAltaEnFecha(fecha);
+
+        if (ventaMasAlta != null && clienteDeVentaMasAlta != null) {
+            // Aquí puedes devolver los datos como necesites
+            Map<String, Object> response = new HashMap<>();
+            response.put("ventaMasAlta", ventaMasAlta);
+            response.put("clienteDeVentaMasAlta", clienteDeVentaMasAlta);
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
 

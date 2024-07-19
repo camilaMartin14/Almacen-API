@@ -60,4 +60,28 @@ public class VentaService implements IVentaService{
     public void editVenta(Venta ven) {
         this.saveVenta(ven);
     }
+    
+    //Método para obtener venta más alta en un día
+    public Venta obtenerVentaMasAltaEnFecha(LocalDate fecha) {
+        List<Venta> ventasEnFecha = venRepo.findByFechaVenta(fecha);
+        Venta ventaMasAlta = null;
+        double maxTotal = Double.MIN_VALUE;
+
+        for (Venta venta : ventasEnFecha) {
+            if (venta.getTotal() > maxTotal) {
+                maxTotal = venta.getTotal();
+                ventaMasAlta = venta;
+            }
+        }
+
+        return ventaMasAlta;
+    }
+
+    public Cliente obtenerClienteDeVentaMasAltaEnFecha(LocalDate fecha) {
+        Venta ventaMasAlta = obtenerVentaMasAltaEnFecha(fecha);
+        if (ventaMasAlta != null) {
+            return ventaMasAlta.getUnCliente();
+        }
+        return null;
+    }
 }

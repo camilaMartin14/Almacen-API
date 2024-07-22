@@ -101,4 +101,12 @@ public class VentaController {
         venServ.findProductosVenta(codigo_venta, productosVenta);
         return productosVenta;
     }
+    
+    @GetMapping("/ventas/{fecha_venta}")
+    public String obtenerSumatoriaVentasEnFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha_venta) {
+        double totalMonto = venServ.getTotalMontoVentasEnFecha(fecha_venta);
+        int cantidadVentas = venServ.getCantidadVentasEnFecha(fecha_venta);
+
+        return "Para la fecha " + fecha_venta + ": Total monto ventas = " + totalMonto + ", Cantidad de ventas = " + cantidadVentas;
+    }
 }

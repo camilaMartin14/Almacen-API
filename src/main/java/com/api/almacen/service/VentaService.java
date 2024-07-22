@@ -93,4 +93,21 @@ public class VentaService implements IVentaService{
         }
     }
 
+    @Override
+    public double getTotalMontoVentasEnFecha(LocalDate fecha) {
+        List<Venta> ventasEnFecha = venRepo.findByFechaVenta(fecha);
+        double totalMonto = 0.0;
+    
+        for (Venta venta : ventasEnFecha) {
+            totalMonto += venta.getTotal();
+        }
+    
+        return totalMonto;
+    }
+
+    @Override
+    public int getCantidadVentasEnFecha(LocalDate fecha) {
+        List<Venta> ventasEnFecha = venRepo.findByFechaVenta(fecha);
+        return ventasEnFecha.size();     
+    }
 }

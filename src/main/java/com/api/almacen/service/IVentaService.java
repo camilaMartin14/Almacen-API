@@ -27,5 +27,8 @@ public interface IVentaService {
     
     public void findProductosVenta(Long codigoVenta, List<Producto> listaProductos);
           
+    public double getTotalMontoVentasEnFecha(LocalDate fecha);
+
+    public int getCantidadVentasEnFecha(LocalDate fecha);
 }
 

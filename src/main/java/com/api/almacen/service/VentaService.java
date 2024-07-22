@@ -84,4 +84,13 @@ public class VentaService implements IVentaService{
         }
         return null;
     }
+
+    @Override
+    public void findProductosVenta(Long codigoVenta, List<Producto> listaProductos) {
+        Venta venta = findVenta(codigoVenta);
+        if (venta != null) {
+            listaProductos.addAll(venta.getListaProductos());
+        }
+    }
+
 }

@@ -6,6 +6,7 @@ import com.api.almacen.model.Venta;
 import com.api.almacen.service.IVentaService;
 import com.api.almacen.service.VentaService;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -78,7 +79,7 @@ public class VentaController {
     }
     
     //encontrar venta más alta en un día específico y el cliente de esa venta
-    @GetMapping("/venta-mas-alta")
+    @GetMapping("/ventas/mayor_venta")
     public String obtenerVentaMasAltaEnFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
         Venta ventaMasAlta = ventaService.obtenerVentaMasAltaEnFecha(fecha);
         Cliente clienteDeVentaMasAlta = ventaService.obtenerClienteDeVentaMasAltaEnFecha(fecha);
@@ -91,5 +92,13 @@ public class VentaController {
         } else {
             return "No se  encontró la venta más alta de ese día";
         }
+    }
+    
+    //listar productos de una venta
+    @GetMapping("/ventas/productos/{codigo_venta}")
+    public List<Producto> findProductosVenta(@PathVariable Long codigo_venta) {
+        List<Producto> productosVenta = new ArrayList<>();
+        venServ.findProductosVenta(codigo_venta, productosVenta);
+        return productosVenta;
     }
 }

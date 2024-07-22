@@ -6,12 +6,9 @@ import com.api.almacen.model.Venta;
 import com.api.almacen.service.IVentaService;
 import com.api.almacen.service.VentaService;
 import java.time.LocalDate;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -80,22 +77,19 @@ public class VentaController {
         return venServ.findVenta(ven.getCodigo_venta());
     }
     
-    //encontrar venta más alta en un día específico
+    //encontrar venta más alta en un día específico y el cliente de esa venta
     @GetMapping("/venta-mas-alta")
-    public ResponseEntity<?> obtenerVentaMasAltaEnFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
+    public String obtenerVentaMasAltaEnFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
         Venta ventaMasAlta = ventaService.obtenerVentaMasAltaEnFecha(fecha);
         Cliente clienteDeVentaMasAlta = ventaService.obtenerClienteDeVentaMasAltaEnFecha(fecha);
 
         if (ventaMasAlta != null && clienteDeVentaMasAlta != null) {
             // Aquí puedes devolver los datos como necesites
-            Map<String, Object> response = new HashMap<>();
-            response.put("La venta más alta fue de: ", ventaMasAlta);
-            response.put("El cliente con la compra más alta fue: ", clienteDeVentaMasAlta);
-            return ResponseEntity.ok(response);
+            return "La venta más alta fue de: " + ventaMasAlta +
+                            ". El cliente con la compra más alta fue: " + 
+                            clienteDeVentaMasAlta + ".";
         } else {
-            return ResponseEntity.notFound().build();
+            return "No se  encontró la venta más alta de ese día";
         }
     }
-
 }
-

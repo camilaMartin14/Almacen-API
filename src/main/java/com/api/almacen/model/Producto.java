@@ -32,5 +32,5 @@ public class Producto {
         this.precio = precio;
         this.cantidad_disponible = cantidad_disponible;
     }
-    
+
 }

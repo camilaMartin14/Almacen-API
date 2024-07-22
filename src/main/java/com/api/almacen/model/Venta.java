@@ -41,5 +41,4 @@ public class Venta {
         this.listaProductos = lista_productos;
         this.unCliente = cliente;
     }
-    
 }

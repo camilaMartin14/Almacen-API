@@ -89,12 +89,13 @@ public class VentaController {
         if (ventaMasAlta != null && clienteDeVentaMasAlta != null) {
             // Aquí puedes devolver los datos como necesites
             Map<String, Object> response = new HashMap<>();
-            response.put("ventaMasAlta", ventaMasAlta);
-            response.put("clienteDeVentaMasAlta", clienteDeVentaMasAlta);
+            response.put("La venta más alta fue de: ", ventaMasAlta);
+            response.put("El cliente con la compra más alta fue: ", clienteDeVentaMasAlta);
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.notFound().build();
         }
     }
+
 }
 

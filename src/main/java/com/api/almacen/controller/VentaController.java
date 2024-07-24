@@ -78,6 +78,14 @@ public class VentaController {
         return venServ.findVenta(ven.getCodigo_venta());
     }
     
+    //listar productos de una venta
+    @GetMapping("/ventas/productos/{codigo_venta}")
+    public List<Producto> findProductosVenta(@PathVariable Long codigo_venta) {
+        List<Producto> productosVenta = new ArrayList<>();
+        venServ.findProductosVenta(codigo_venta, productosVenta);
+        return productosVenta;
+    }
+    /*-------------------------------REVISAR---------------------------------------------
     //encontrar venta más alta en un día específico y el cliente de esa venta
     @GetMapping("/ventas/mayor_venta")
     public String obtenerVentaMasAltaEnFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
@@ -85,7 +93,7 @@ public class VentaController {
         Cliente clienteDeVentaMasAlta = ventaService.obtenerClienteDeVentaMasAltaEnFecha(fecha);
 
         if (ventaMasAlta != null && clienteDeVentaMasAlta != null) {
-            // Aquí puedes devolver los datos como necesites
+            //devolver los datos
             return "La venta más alta fue de: " + ventaMasAlta +
                             ". El cliente con la compra más alta fue: " + 
                             clienteDeVentaMasAlta + ".";
@@ -94,14 +102,9 @@ public class VentaController {
         }
     }
     
-    //listar productos de una venta
-    @GetMapping("/ventas/productos/{codigo_venta}")
-    public List<Producto> findProductosVenta(@PathVariable Long codigo_venta) {
-        List<Producto> productosVenta = new ArrayList<>();
-        venServ.findProductosVenta(codigo_venta, productosVenta);
-        return productosVenta;
-    }
+
     
+    //Obtener el total del día
     @GetMapping("/ventas/{fecha_venta}")
     public String obtenerSumatoriaVentasEnFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha_venta) {
         double totalMonto = venServ.getTotalMontoVentasEnFecha(fecha_venta);
@@ -109,4 +112,5 @@ public class VentaController {
 
         return "Para la fecha " + fecha_venta + ": Total monto ventas = " + totalMonto + ", Cantidad de ventas = " + cantidadVentas;
     }
+*/
 }

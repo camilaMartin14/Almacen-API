@@ -68,9 +68,11 @@ public class ProductoController {
         
         return prodServ.findProducto(prod.getCodigo_producto());
     }
-    
+
     //listar productos bajos de stock
+    @GetMapping ("/productos/sin-stock")
     public List<Producto> findProductoBajoStock() {
         return prodServ.findProductoBajoStock();
     }
+
 }

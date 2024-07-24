@@ -18,7 +18,7 @@ public class Venta {
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long codigo_venta;
-    private LocalDate fecha_venta;
+    public LocalDate fecha_venta;
     private double total;
     @OneToMany
     private List<Producto> listaProductos;

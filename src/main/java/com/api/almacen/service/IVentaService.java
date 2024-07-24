@@ -24,11 +24,14 @@ public interface IVentaService {
                             Cliente nuevoCliente);
 
     public void editVenta(Venta ven);
-    
+   
     public void findProductosVenta(Long codigoVenta, List<Producto> listaProductos);
+    /*-----------------------------------------REVISAR------------------
+    
           
     public double getTotalMontoVentasEnFecha(LocalDate fecha);
 
     public int getCantidadVentasEnFecha(LocalDate fecha);
+*/
 }
 

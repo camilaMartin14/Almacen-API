@@ -63,8 +63,6 @@ public class ProductoService implements IProductoService{
         this.saveProducto(prod);
     }
     
-    //-------------------------- Métodos adicionales --------------------------
-
     @Override
     public List<Producto> findProductoBajoStock() {
         List<Producto> todosLosProductos = getProductos();
@@ -78,4 +76,5 @@ public class ProductoService implements IProductoService{
 
         return productosBajoStock;
     }
+    
 }

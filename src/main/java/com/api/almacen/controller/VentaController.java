@@ -85,24 +85,6 @@ public class VentaController {
         venServ.findProductosVenta(codigo_venta, productosVenta);
         return productosVenta;
     }
-    /*-------------------------------REVISAR---------------------------------------------
-    //encontrar venta más alta en un día específico y el cliente de esa venta
-    @GetMapping("/ventas/mayor_venta")
-    public String obtenerVentaMasAltaEnFecha(@RequestParam("fecha") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha) {
-        Venta ventaMasAlta = ventaService.obtenerVentaMasAltaEnFecha(fecha);
-        Cliente clienteDeVentaMasAlta = ventaService.obtenerClienteDeVentaMasAltaEnFecha(fecha);
-
-        if (ventaMasAlta != null && clienteDeVentaMasAlta != null) {
-            //devolver los datos
-            return "La venta más alta fue de: " + ventaMasAlta +
-                            ". El cliente con la compra más alta fue: " + 
-                            clienteDeVentaMasAlta + ".";
-        } else {
-            return "No se  encontró la venta más alta de ese día";
-        }
-    }
-    
-
     
     //Obtener el total del día
     @GetMapping("/ventas/{fecha_venta}")
@@ -112,5 +94,4 @@ public class VentaController {
 
         return "Para la fecha " + fecha_venta + ": Total monto ventas = " + totalMonto + ", Cantidad de ventas = " + cantidadVentas;
     }
-*/
 }

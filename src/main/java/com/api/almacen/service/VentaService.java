@@ -5,6 +5,7 @@ import com.api.almacen.model.Producto;
 import com.api.almacen.model.Venta;
 import com.api.almacen.repository.IVentaRepository;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,33 +62,6 @@ public class VentaService implements IVentaService{
         this.saveVenta(ven);
     }
     
-    /*---------------------------------------REVISAR--------------------------
-    
-    //Método para obtener venta más alta en un día
-    public Venta obtenerVentaMasAltaEnFecha(LocalDate fecha_venta) {
-        List<Venta> ventasEnFecha = venRepo.findByFecha_venta(fecha_venta);
-        Venta ventaMasAlta = null;
-        double maxTotal = Double.MIN_VALUE;
-
-        for (Venta venta : ventasEnFecha) {
-            if (venta.getTotal() > maxTotal) {
-                maxTotal = venta.getTotal();
-                ventaMasAlta = venta;
-            }
-        }
-
-        return ventaMasAlta;
-    }
-
-
-    public Cliente obtenerClienteDeVentaMasAltaEnFecha(LocalDate fecha) {
-        Venta ventaMasAlta = obtenerVentaMasAltaEnFecha(fecha);
-        if (ventaMasAlta != null) {
-            return ventaMasAlta.getUnCliente();
-        }
-        return null;
-    }*/
-
     @Override
     public void findProductosVenta(Long codigoVenta, List<Producto> listaProductos) {
         Venta venta = findVenta(codigoVenta);
@@ -95,12 +69,14 @@ public class VentaService implements IVentaService{
             listaProductos.addAll(venta.getListaProductos());
         }
     }
-/*
+    
+    
     @Override
     public double getTotalMontoVentasEnFecha(LocalDate fecha_venta) {
-        List<Venta> ventasEnFecha = venRepo.findByFecha_venta(fecha_venta);
+        List <Venta> listaVentas= venRepo.findAll();
+        ArrayList<Venta> ventasEnFecha = IVentaRepository.findByFecha_venta(new ArrayList<>(listaVentas), fecha_venta);
+        
         double totalMonto = 0.0;
-    
         for (Venta venta : ventasEnFecha) {
             totalMonto += venta.getTotal();
         }
@@ -110,8 +86,10 @@ public class VentaService implements IVentaService{
 
     @Override
     public int getCantidadVentasEnFecha(LocalDate fecha_venta) {
-        List<Venta> ventasEnFecha = venRepo.findByFecha_venta(fecha_venta);
+        List <Venta> listaVentas= venRepo.findAll();
+        ArrayList<Venta> ventasEnFecha = IVentaRepository.findByFecha_venta(new ArrayList<>(listaVentas), fecha_venta);
+        
         return ventasEnFecha.size();     
     }
-*/
+    
 }

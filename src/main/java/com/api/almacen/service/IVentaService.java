@@ -26,12 +26,16 @@ public interface IVentaService {
     public void editVenta(Venta ven);
    
     public void findProductosVenta(Long codigoVenta, List<Producto> listaProductos);
-    /*-----------------------------------------REVISAR------------------
+
+    //public List<Venta> findByFecha_venta(LocalDate fecha_venta);
     
-          
     public double getTotalMontoVentasEnFecha(LocalDate fecha);
 
     public int getCantidadVentasEnFecha(LocalDate fecha);
+    /*-----------------------------------------REVISAR------------------
+    
+          
+
 */
 }
 

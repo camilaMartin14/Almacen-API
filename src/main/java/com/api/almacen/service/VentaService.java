@@ -74,7 +74,7 @@ public class VentaService implements IVentaService{
     @Override
     public double getTotalMontoVentasEnFecha(LocalDate fecha_venta) {
         List <Venta> listaVentas= venRepo.findAll();
-        ArrayList<Venta> ventasEnFecha = IVentaRepository.findByFecha_venta(new ArrayList<>(listaVentas), fecha_venta);
+        ArrayList<Venta> ventasEnFecha = findByFecha_venta(new ArrayList<>(listaVentas), fecha_venta);
         
         double totalMonto = 0.0;
         for (Venta venta : ventasEnFecha) {
@@ -87,9 +87,24 @@ public class VentaService implements IVentaService{
     @Override
     public int getCantidadVentasEnFecha(LocalDate fecha_venta) {
         List <Venta> listaVentas= venRepo.findAll();
-        ArrayList<Venta> ventasEnFecha = IVentaRepository.findByFecha_venta(new ArrayList<>(listaVentas), fecha_venta);
+        ArrayList<Venta> ventasEnFecha = findByFecha_venta(new ArrayList<>(listaVentas), fecha_venta);
         
         return ventasEnFecha.size();     
     }
-    
+
+    @Override
+    public ArrayList<Venta> findByFecha_venta(ArrayList<Venta> listaVentas, LocalDate fechaBusqueda) {
+        ArrayList<Venta> ventasFiltradas = new ArrayList<>();
+        
+        for (Venta venta : listaVentas) {
+            // Compara las fechas usando el método equals de la clase Date
+            if (venta.getFecha_venta().equals(fechaBusqueda)) {
+                ventasFiltradas.add(venta);
+            }
+        }
+        
+        return ventasFiltradas;
+    }     
 }
+    
+

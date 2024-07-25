@@ -87,7 +87,7 @@ public class VentaController {
     }
     
     //Obtener el total del día
-    @GetMapping("/ventas/{fecha_venta}")
+    @GetMapping("/ventas/total/{fecha_venta}")
     public String obtenerSumatoriaVentasEnFecha(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fecha_venta) {
         double totalMonto = venServ.getTotalMontoVentasEnFecha(fecha_venta);
         int cantidadVentas = venServ.getCantidadVentasEnFecha(fecha_venta);

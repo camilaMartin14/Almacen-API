@@ -4,6 +4,7 @@ import com.api.almacen.model.Cliente;
 import com.api.almacen.model.Producto;
 import com.api.almacen.model.Venta;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface IVentaService {
@@ -32,10 +33,7 @@ public interface IVentaService {
     public double getTotalMontoVentasEnFecha(LocalDate fecha);
 
     public int getCantidadVentasEnFecha(LocalDate fecha);
-    /*-----------------------------------------REVISAR------------------
-    
-          
 
-*/
+    public ArrayList<Venta> findByFecha_venta(ArrayList<Venta> listaVentas, LocalDate fechaBusqueda);
 }
 

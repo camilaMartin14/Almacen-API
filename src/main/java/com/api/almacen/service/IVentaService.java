@@ -27,8 +27,6 @@ public interface IVentaService {
     public void editVenta(Venta ven);
    
     public void findProductosVenta(Long codigoVenta, List<Producto> listaProductos);
-
-    //public List<Venta> findByFecha_venta(LocalDate fecha_venta);
     
     public double getTotalMontoVentasEnFecha(LocalDate fecha);
 
